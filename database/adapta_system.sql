@@ -1,6 +1,10 @@
+-- Criação do banco
 CREATE DATABASE adapta_system;
 USE adapta_system;
 
+
+
+-- Tabela de professores 
 CREATE TABLE professores (
    id_professor INT PRIMARY KEY AUTO_INCREMENT,
    nome VARCHAR(255) NOT NULL,
