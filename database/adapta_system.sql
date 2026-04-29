@@ -4,7 +4,7 @@ USE adapta_system;
 
 
 
--- Tabela de professores 
+-- TABELA PROFESSORES
 CREATE TABLE professores (
    id_professor INT PRIMARY KEY AUTO_INCREMENT,
    nome VARCHAR(255) NOT NULL,
@@ -12,3 +12,7 @@ CREATE TABLE professores (
    senha VARCHAR(255) NOT NULL,
    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+-- TABELA ALUNOS
+-- TABELA TURMAS
