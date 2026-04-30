@@ -61,5 +61,5 @@ CREATE TABLE necessidade (
   nome VARCHAR(255) NOT NULL,
   id_aluno INT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (id_aluno) REFERENCES aluno(id_aluno) ON DELETE CASCADE
+  FOREIGN KEY (id_aluno) REFERENCES alunos(id_aluno) ON DELETE CASCADE
 );
