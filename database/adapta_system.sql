@@ -35,7 +35,7 @@ CREATE TABLE turma (
 
 
 -- MATÉRIA 
-CREATE TABLE materia (
+CREATE TABLE materias (
   id_materia INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -51,8 +51,8 @@ CREATE TABLE atividades (
   id_materia INT,
   id_turma INT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (id_materia) REFERENCES materia(id_materia),
-  FOREIGN KEY (id_turma) REFERENCES turma(id_turma)
+  FOREIGN KEY (id_materia) REFERENCES materias(id_materia),
+  FOREIGN KEY (id_turma) REFERENCES turmas(id_turma)
 );
 
 -- NECESSIDADE 
