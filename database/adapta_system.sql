@@ -38,6 +38,8 @@ CREATE TABLE turmas (
 CREATE TABLE materias (
   id_materia INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
+id_professor INT,
+ FOREIGN KEY (id_professor) REFERENCES professores(id_professor),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
