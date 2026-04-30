@@ -40,3 +40,17 @@ CREATE TABLE materia (
   nome VARCHAR(255) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+
+-- ATIVIDADE 
+CREATE TABLE atividades (
+  id_atividade INT PRIMARY KEY AUTO_INCREMENT,
+  titulo VARCHAR(255) NOT NULL,
+  descricao VARCHAR(300) NOT NULL,
+  id_materia INT,
+  id_turma INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_materia) REFERENCES materia(id_materia),
+  FOREIGN KEY (id_turma) REFERENCES turma(id_turma)
+);
