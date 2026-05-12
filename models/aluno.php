@@ -4,6 +4,7 @@ private $conn;
 public function __construct($conexao){
 $this->conn = $conexao;
 }
+// Pega todos os alunos do banco
 public function listarAluno(){
 
 $sql = "SELECT * FROM alunos";
@@ -13,6 +14,8 @@ $stmt = $this->conn->query($sql);
 
 return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+// Pega somente um aluno
 public function buscarAluno($id_aluno) {
 
 $sql = "SELECT * FROM alunos where id_aluno = :id_aluno";
