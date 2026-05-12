@@ -14,7 +14,7 @@ return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 public function buscarAluno() {
 
-$sql = "SELECT * FROM id_aluno where id_aluno : id_aluno";
+$sql = "SELECT * FROM alunos where id_aluno : id_aluno";
 
 $stmt = $this->conn->query($sql);
 
