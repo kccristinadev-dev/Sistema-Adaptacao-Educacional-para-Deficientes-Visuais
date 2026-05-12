@@ -6,7 +6,7 @@ $this->conn = $conexao;
 }
 
 
-// Pega todos os alunos do banco
+// Pega todos os professores do banco
 public function listarProf(){
 
 $sql = "SELECT * FROM professores";
@@ -18,10 +18,10 @@ return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
-// Pega somente um aluno específico 
+// Pega somente um professor específico 
 public function buscarProf($id_professor) {
 
-$sql = "SELECT * FROM alunos where id_professor = :id_professor";
+$sql = "SELECT * FROM professores where id_professor = :id_professor";
 
 $stmt = $this->conn->prepare($sql);
 $stmt->bindParam(':id_professor, $id_professor, PDO::PARAM_INT);
