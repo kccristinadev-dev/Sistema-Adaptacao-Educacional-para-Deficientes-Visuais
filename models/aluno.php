@@ -9,6 +9,8 @@ public function listarAluno(){
 $sql = "SELECT * FROM alunos";
 
 $stmt = $this->conn->query($sql);
+$stmt->blindParam(':id_aluno', $id_aluno, PDO::PARAM_INT);
+$stmt->execute;
 
 return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
