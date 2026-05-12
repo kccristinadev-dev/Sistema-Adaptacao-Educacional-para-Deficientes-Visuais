@@ -13,15 +13,15 @@ $stmt = $this->conn->query($sql);
 
 return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-public function buscarAluno() {
+public function buscarAluno($id_aluno) {
 
-$sql = "SELECT * FROM alunos where id_aluno : id_aluno";
+$sql = "SELECT * FROM alunos where id_aluno = :id_aluno";
 
 $stmt = $this->conn->prepare($sql);
-$stmt->blindParam(':id_aluno', $id_aluno, PDO::PARAM_INT);
-$stmt->execute;
+$stmt->bindParam(':id_aluno', $id_aluno, PDO::PARAM_INT);
+$stmt->execute();
 
-return $stmt->fetchAll(PDO::FETCH_ASSOC);
+return $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 }
