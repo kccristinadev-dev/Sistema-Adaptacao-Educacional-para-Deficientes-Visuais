@@ -24,13 +24,13 @@ public function buscarProf($id_professor) {
 $sql = "SELECT * FROM professores where id_professor = :id_professor";
 
 $stmt = $this->conn->prepare($sql);
-$stmt->bindParam(':id_professor, $id_professor, PDO::PARAM_INT);
+$stmt->bindParam(':id_professor', $id_professor, PDO::PARAM_INT);
 $stmt->execute();
 
 return $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-}
+
 
 }
 
