@@ -30,7 +30,9 @@
 
         <!-- Seção principal -->
         <section>
-            <img src="" alt="Logotipo da DORINA, sistema inteligente de gestão escolar" />
+       <div class="logo">
+               <img src="" alt="Logotipo da DORINA, sistema inteligente de gestão escolar" />
+</div>
             <h1>DORINA</h1>
             <p>Sistema de Gerenciamento de Atividades Escolares com Acessibilidade</p>
             
