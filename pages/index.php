@@ -8,8 +8,7 @@
     <!-- SEO -->
     <meta name="description" content="Descrição do projeto">
     <meta name="keywords" content="sistema, web, projeto">
-    <meta name="Dorina" content="Dorina">
-
+    <meta name="author" content="Dorina">
     <!-- Título -->
     <title>DORINA</title>
 
