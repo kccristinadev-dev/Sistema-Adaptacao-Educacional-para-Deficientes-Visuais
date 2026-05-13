@@ -32,7 +32,7 @@
         <section>
             <img src="" alt="Logotipo da DORINA, sistema inteligente de gestão escolar" />
             <h1>DORINA</h1>
-            <p>Descrição rapida</p>
+            <p>Sistema de Gerenciamento de Atividades Escolares com Acessibilidade</p>
             
 
         </section>
