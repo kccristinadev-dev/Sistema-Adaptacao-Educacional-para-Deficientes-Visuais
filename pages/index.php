@@ -8,21 +8,17 @@
     <!-- SEO -->
     <meta name="description" content="Descrição do projeto">
     <meta name="keywords" content="sistema, web, projeto">
-    <meta name="author" content="Seu Nome">
+    <meta name="Dorina" content="Dorina">
 
     <!-- Título -->
     <title>DORINA</title>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
+  
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../css/index.css">
 
-    <!-- Fonte externa (opcional) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+   
     <!-- Scripts do head -->
     <script src="../assets/js/script.js" defer></script>
 </head>
