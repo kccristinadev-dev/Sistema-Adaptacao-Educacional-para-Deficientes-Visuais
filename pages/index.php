@@ -61,7 +61,7 @@
 <p>Gerencie turmas, atividades e desempenho.</p>                </a>
             </article>
             
-      <!-- Card / Opção de comandopor voz-->
+      <!-- Card / Opção de comando por voz-->
              <article>
          <a class="card-opcao" href="#">
             <h2>Ativar comando por voz</h2>
