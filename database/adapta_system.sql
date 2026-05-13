@@ -69,7 +69,7 @@ CREATE TABLE necessidades (
 
 
 -- ADAPTAÇÃO 
-CREATE TABLE adaptacao (
+CREATE TABLE adaptacoes (
   id_adaptacao INT PRIMARY KEY AUTO_INCREMENT,
   tipo_adaptacao VARCHAR(100),
   descricao TEXT,
