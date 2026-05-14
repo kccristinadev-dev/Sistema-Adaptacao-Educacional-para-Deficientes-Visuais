@@ -14,7 +14,7 @@ CREATE TABLE pessoas (
 -- TABELA PROFESSORES
 CREATE TABLE professores (
    id_professor INT PRIMARY KEY AUTO_INCREMENT,  id_pessoa INT,
- FOREIGN KEY (id_pessoa) REFERENCES pessoas(id_pessoa) ON DELETE CASCADE created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ FOREIGN KEY (id_pessoa) REFERENCES pessoas(id_pessoa) ON DELETE CASCADE, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
    
 );
 
@@ -23,7 +23,7 @@ CREATE TABLE professores (
 CREATE TABLE alunos (
     id_aluno INT PRIMARY KEY AUTO_INCREMENT,
     matricula VARCHAR(25) NOT NULL UNIQUE, id_pessoa INT,
- FOREIGN KEY (id_pessoa) REFERENCES pessoas(id_pessoa) ON DELETE CASCADE
+ FOREIGN KEY (id_pessoa) REFERENCES pessoas(id_pessoa) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
