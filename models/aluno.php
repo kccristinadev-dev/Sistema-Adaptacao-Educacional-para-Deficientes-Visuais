@@ -9,7 +9,7 @@ $this->conn = $conexao;
 // Pega todos os alunos do banco
 public function listarAluno(){
 
-$sql = "SELECT * FROM alunos";
+$sql = "SELECT p.* FROM pessoas p JOIN alunos a ON a.id_pessoa = p.id_pessoa";.
 
 $stmt = $this->conn->query($sql);
 
