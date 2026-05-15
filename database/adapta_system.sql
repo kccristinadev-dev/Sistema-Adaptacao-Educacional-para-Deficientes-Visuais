@@ -55,8 +55,8 @@ CREATE TABLE atividades (
   id_atividade INT PRIMARY KEY AUTO_INCREMENT,
   titulo VARCHAR(255) NOT NULL,
   descricao VARCHAR(300) NOT NULL,
-  id_materia INT,
-  id_turma INT,
+  id_materia INT NOT NULL,
+  id_turma INT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (id_materia) REFERENCES materias(id_materia),
   FOREIGN KEY (id_turma) REFERENCES turmas(id_turma)
@@ -66,7 +66,7 @@ CREATE TABLE atividades (
 CREATE TABLE necessidades (
   id_necessidade INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
-  id_aluno INT,
+  id_aluno INT NOTNULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (id_aluno) REFERENCES alunos(id_aluno) ON DELETE CASCADE
 );
