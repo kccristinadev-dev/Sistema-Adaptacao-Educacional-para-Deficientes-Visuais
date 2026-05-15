@@ -10,6 +10,7 @@ CREATE TABLE pessoas (
 cpf VARCHAR(25) NOT NULL UNIQUE, 
  telefone VARCHAR(20) NOT NULL,
    senha VARCHAR(255) NOT NULL,
+tipo ENUM('admin', 'professor', 'aluno'),
    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
