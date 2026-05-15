@@ -66,7 +66,7 @@ CREATE TABLE atividades (
 CREATE TABLE necessidades (
   id_necessidade INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
-  id_aluno INT NOTNULL,
+  id_aluno INT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (id_aluno) REFERENCES alunos(id_aluno) ON DELETE CASCADE
 );
