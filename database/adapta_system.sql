@@ -54,7 +54,7 @@ id_professor INT NOT NULL,
 -- ATIVIDADE 
 CREATE TABLE atividades (
   id_atividade INT PRIMARY KEY AUTO_INCREMENT,
-status ENUM('publicada', 'em andamento', 'Concluída', 'entregue),
+status ENUM('publicada', 'em andamento', 'Concluída', 'entregue'),
   titulo VARCHAR(255) NOT NULL,
   descricao VARCHAR(300) NOT NULL,
   id_materia INT NOT NULL,
