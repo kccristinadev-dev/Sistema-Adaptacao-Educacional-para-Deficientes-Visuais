@@ -54,6 +54,7 @@ id_professor INT NOT NULL,
 -- ATIVIDADE 
 CREATE TABLE atividades (
   id_atividade INT PRIMARY KEY AUTO_INCREMENT,
+status ENUM('publicada', 'em andamento', 'Concluída', 'entregue),
   titulo VARCHAR(255) NOT NULL,
   descricao VARCHAR(300) NOT NULL,
   id_materia INT NOT NULL,
@@ -77,7 +78,7 @@ CREATE TABLE necessidades (
 -- ADAPTAÇÃO 
 CREATE TABLE adaptacoes (
   id_adaptacao INT PRIMARY KEY AUTO_INCREMENT,
-  tipo_adaptacao VARCHAR(100),
+  tipo ENUM ('audio descricao', 'alto_contraste', 'ampliacao de texto, 'text-to-speech', 'leitor de tela'),
   descricao TEXT,
   id_aluno INT NOT NULL,
   id_atividade INT NOT NULL,
