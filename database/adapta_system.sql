@@ -78,7 +78,7 @@ CREATE TABLE necessidades (
 -- ADAPTAÇÃO 
 CREATE TABLE adaptacoes (
   id_adaptacao INT PRIMARY KEY AUTO_INCREMENT,
-  tipo ENUM ('audio descricao', 'alto_contraste', 'ampliacao de texto, 'text-to-speech', 'leitor de tela'),
+  tipo ENUM('audio descricao', 'alto_contraste', 'ampliacao de texto', 'text-to-speech', 'leitor de tela'),
   descricao TEXT,
   id_aluno INT NOT NULL,
   id_atividade INT NOT NULL,
