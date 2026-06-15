@@ -16,8 +16,10 @@ tipo ENUM('admin', 'professor', 'aluno'),
 
 -- TABELA PROFESSORES
 CREATE TABLE professores (
-   id_professor INT PRIMARY KEY AUTO_INCREMENT,  id_pessoa INT NOT NULL UNIQUE,
- FOREIGN KEY (id_pessoa) REFERENCES pessoas(id_pessoa) ON DELETE CASCADE, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   id_professor INT PRIMARY KEY AUTO_INCREMENT,  
+   id_pessoa INT NOT NULL UNIQUE,
+ FOREIGN KEY (id_pessoa) REFERENCES pessoas(id_pessoa) ON DELETE CASCADE,
+   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
    
 );
 
