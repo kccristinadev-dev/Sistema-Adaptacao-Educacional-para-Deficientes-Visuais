@@ -2,7 +2,7 @@
 CREATE DATABASE adapta_system;
 USE adapta_system;
 
-
+-- TABELA Pessoas
 CREATE TABLE pessoas (
    id_pessoa INT PRIMARY KEY AUTO_INCREMENT,
    nome VARCHAR(255) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE turmas (
 );
 
 
--- MATÉRIA 
+-- TURMA MATÉRIA 
 CREATE TABLE materias (
   id_materia INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
@@ -51,7 +51,7 @@ id_professor INT NOT NULL,
 
 
 
--- ATIVIDADE 
+-- TURMA ATIVIDADE 
 CREATE TABLE atividades (
   id_atividade INT PRIMARY KEY AUTO_INCREMENT,
 status ENUM('publicada', 'em andamento', 'Concluída', 'entregue'),
@@ -64,7 +64,7 @@ status ENUM('publicada', 'em andamento', 'Concluída', 'entregue'),
   FOREIGN KEY (id_turma) REFERENCES turmas(id_turma)
 );
 
--- NECESSIDADE 
+-- TURMA NECESSIDADE 
 CREATE TABLE necessidades (
   id_necessidade INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE necessidades (
 
 
 
--- ADAPTAÇÃO 
+-- TURMA ADAPTAÇÃO 
 CREATE TABLE adaptacoes (
   id_adaptacao INT PRIMARY KEY AUTO_INCREMENT,
   tipo ENUM('audio descricao', 'alto_contraste', 'ampliacao de texto', 'text-to-speech', 'leitor de tela'),
@@ -88,7 +88,7 @@ CREATE TABLE adaptacoes (
 );
 
 
--- TURMA E ALUNOS 
+-- TABELA TURMA E ALUNOS 
 CREATE TABLE aluno_turma (
   id_aluno INT NOT NULL,
   id_turma INT NOT NULL,
