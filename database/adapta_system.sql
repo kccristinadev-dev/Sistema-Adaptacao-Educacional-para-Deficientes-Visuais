@@ -114,3 +114,19 @@ CREATE TABLE alunos_necessidades (
         REFERENCES necessidades(id_necessidade)
         ON DELETE CASCADE
 );
+
+-- TABELA PROFESSOR E MATÉRIA 
+CREATE TABLE professores_materias (
+    id_professor INT NOT NULL,
+    id_materia INT NOT NULL,
+
+    PRIMARY KEY (id_professor, id_materia),
+
+    FOREIGN KEY (id_professor)
+        REFERENCES professores(id_professor)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (id_materia)
+        REFERENCES materias(id_materia)
+        ON DELETE CASCADE
+);
