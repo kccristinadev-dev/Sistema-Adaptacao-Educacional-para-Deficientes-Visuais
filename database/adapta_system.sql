@@ -70,9 +70,7 @@ status ENUM('publicada', 'em andamento', 'Concluída', 'entregue'),
 CREATE TABLE necessidades (
   id_necessidade INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
-  id_aluno INT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (id_aluno) REFERENCES alunos(id_aluno) ON DELETE CASCADE
 );
 
 
@@ -98,4 +96,21 @@ CREATE TABLE aluno_turma (
   PRIMARY KEY (id_aluno, id_turma),
   FOREIGN KEY (id_aluno) REFERENCES alunos(id_aluno) ON DELETE CASCADE,
   FOREIGN KEY (id_turma) REFERENCES turmas(id_turma) ON DELETE CASCADE
+);
+
+
+-- TABELA NECESSIDADE E ALUNOS 
+CREATE TABLE alunos_necessidades (
+    id_aluno INT NOT NULL,
+    id_necessidade INT NOT NULL,
+
+    PRIMARY KEY (id_aluno, id_necessidade),
+
+    FOREIGN KEY (id_aluno)
+        REFERENCES alunos(id_aluno)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (id_necessidade)
+        REFERENCES necessidades(id_necessidade)
+        ON DELETE CASCADE
 );
