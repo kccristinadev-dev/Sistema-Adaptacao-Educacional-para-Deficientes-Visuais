@@ -68,7 +68,7 @@ status ENUM('publicada', 'em andamento', 'Concluída', 'entregue'),
 CREATE TABLE necessidades (
   id_necessidade INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
