@@ -128,3 +128,17 @@ CREATE TABLE professores_materias (
         REFERENCES materias(id_materia)
         ON DELETE CASCADE
 );
+
+-- TABELA TURMA E MATÉRIA 
+CREATE TABLE turma_materia (
+    id_turma INT NOT NULL,
+    id_materia INT NOT NULL,
+
+    PRIMARY KEY (id_turma, id_materia),
+
+    FOREIGN KEY (id_turma)
+        REFERENCES turmas(id_turma),
+
+    FOREIGN KEY (id_materia)
+        REFERENCES materias(id_materia)
+);
