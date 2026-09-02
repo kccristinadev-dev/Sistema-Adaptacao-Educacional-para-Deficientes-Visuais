@@ -1,0 +1,449 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+body {
+    min-height: 100vh;
+    max-width: 100vw;
+
+background: linear-gradient(
+    to bottom,
+    var(--cor-fundo) 0%,
+    var(--cor-caixa) 55%,
+    rgba(147, 51, 234, 0.12) 100%
+);
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto-principal);
+}
+main{
+    height:100vh;
+}
+/* Cabeçalho */
+.inicio {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+
+.logo img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+}
+
+.inicio h2{
+    color: var(--roxo-principal);
+        font-size: 2.2rem;
+
+}
+.inicio h1 {
+    font-size: 2.9rem;
+        font-weight: 600;
+    color: var(--texto-principal);
+    margin-top: 0;
+}
+
+
+.inicio p {
+    color: var(--texto-secundario);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* Boas vindas */
+main > section:nth-child(2) {
+    text-align: center;
+    padding: 20px;
+}
+
+
+main h2 {
+    color: var(--texto-principal);
+}
+
+
+/* Cards */
+
+#cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    
+}
+
+/* Força os articles das opções a ocuparem o mesmo espaço */
+#cards .card-opcao {
+    display: flex;
+    width: 100%;
+}
+
+/* Transfere a borda e altura total para o LINK */
+#cards .card-opcao {
+    background: var(--cor-fundo);
+    border: 4px solid var(--roxo-intenso);
+    text-align: center;
+    border-radius: 15px;
+    padding: 15px;
+    transition: 0.5s;
+        width: 100%;   
+    display: flex;    
+    flex-direction: column;  
+
+    align-items: center;  
+    justify-content: center;
+}
+
+
+
+
+#cards article:hover {
+    transform: translateY(-5px);
+    border-color: var(--roxo-vibrante);
+}
+#cards a:not(.voz):hover{
+    transform: translateY(-5px);
+    box-shadow: 0 4px var(--roxo-vibrante);
+    background: var(--cor-caixa);
+}
+
+/* Texto dos cards */
+.card-opcao {
+    display: block;
+    
+}
+
+
+.card-opcao h2 {
+    color: var(--texto-principal);
+    margin-bottom: 10px;
+        font-weight: bold;
+
+}
+
+
+.card-opcao p {
+    font-weight: bold;
+    color: var(--texto-secundario);
+}
+.card-opcao .material-symbols-outlined {
+    font-size: 75px;
+    color: #6d28d9;
+    vertical-align: middle;
+}
+
+/* Botão comando de voz */
+.card-voz {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-self: center;
+    border: 3px solid var(--roxo-escuro);
+    border-radius: 45px;
+    padding: 10px;
+    box-shadow: var(--sombra-roxa);
+    background: var(--cor-fundo);
+    padding-bottom: 10px;
+        transition: 0.5s;
+
+}
+
+.voz {
+    background: var(--cor-fundo);
+    padding:  5px;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+}
+
+
+.voz button:hover {
+    background: #f3e8ff;
+}
+
+.voz h2 {
+    font-size: 1.1rem;
+    color: var(--roxo-intenso);
+}
+
+
+.voz p {
+    text-align: center;
+    font-weight: bold;
+    color: var(--texto-secundario);
+}
+.voz .material-symbols-outlined {
+    font-size: 45px;
+    color: #6d28d9;
+    vertical-align: middle;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+/* Rodapé */
+footer {
+    display:flex;
+    flex-direction:column ;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 30px;
+    background: var(--cor-caixa);
+}
+
+
+footer h3 {
+    color: var(--roxo-principal);
+}
+
+
+footer a {
+    color: var(--roxo-intenso);
+    margin: 0 10px;
+}
+
+
+footer p {
+    margin-top: 15px;
+    color: var(--texto-secundario);
+}
+/* ==============================
+   RESPONSIVIDADE E ACESSIBILIDADE
+   ============================== */
+
+/* Evita que o conteúdo fique preso em uma altura fixa */
+main {
+    min-height: auto;
+    height: auto;
+}
+
+/* Telas menores */
+@media (max-width: 700px) {
+
+    .inicio {
+        padding: 30px 15px 15px;
+    }
+
+    .logo img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .inicio h1 {
+        font-size: 2.2rem;
+    }
+
+    .inicio h2 {
+        font-size: 1.8rem;
+    }
+
+    #cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    #cards .card-opcao {
+        min-height: 180px;
+    }
+
+    .card-voz {
+        grid-column: auto;
+        border-radius: 30px;
+    }
+
+    .card-opcao .material-symbols-outlined {
+        font-size: 60px;
+    }
+
+    footer {
+        margin-top: 20px;
+        padding: 25px 15px;
+    }
+}
+/* ==============================
+   ZOOM / TELAS MUITO ESTREITAS
+   ============================== */
+
+/*
+   Quando o zoom aumenta, o navegador reduz
+   a largura CSS disponível. O conteúdo passa
+   naturalmente para uma coluna.
+*/
+
+@media (max-width: 500px) {
+
+    .inicio {
+        padding: 20px 12px;
+    }
+
+    .logo img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .inicio h1 {
+        font-size: 1.9rem;
+    }
+
+    .inicio h2 {
+        font-size: 1.5rem;
+    }
+
+    .inicio p {
+        font-size: 14px;
+    }
+
+    #cards {
+        width: 100%;
+        padding: 10px;
+        gap: 12px;
+    }
+
+    #cards .card-opcao {
+        min-height: 160px;
+        padding: 12px;
+    }
+
+    .card-opcao h2 {
+        font-size: 1.2rem;
+    }
+
+    .card-opcao p {
+        font-size: 14px;
+    }
+
+    .card-opcao .material-symbols-outlined {
+        font-size: 50px;
+    }
+
+    .card-voz {
+        padding: 8px;
+        border-radius: 30px;
+    }
+
+    .voz {
+        width: 100%;
+    }
+
+    .voz h2 {
+        font-size: 1rem;
+    }
+
+    .voz p {
+
+        font-size: 15px;
+    }
+
+    .voz .material-symbols-outlined {
+        font-size: 38px;
+    }
+
+    footer {
+        padding: 20px 10px;
+    }
+
+    footer nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    footer a {
+        margin: 0;
+    }
+}
+
+
+/* ==============================
+   TELAS EXTREMAMENTE ESTREITAS
+   ============================== */
+
+@media (max-width: 350px) {
+
+    .inicio h1 {
+        font-size: 1.6rem;
+    }
+
+    .inicio h2 {
+        font-size: 1.3rem;
+    }
+
+    #cards {
+        padding: 8px;
+    }
+
+    #cards .card-opcao {
+        min-height: 140px;
+    }
+
+    .card-opcao .material-symbols-outlined {
+        font-size: 45px;
+    }
+
+    .card-opcao p {
+        font-size: 13px;
+    }
+
+    .card-voz {
+        border-width: 5px;
+    }
+}
+
+
+/* ==============================
+   EVITA ESTOURO DE CONTEÚDO
+   ============================== */
+
+img {
+    max-width: 100%;
+}
+
+a,
+button {
+    max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3 {
+    overflow-wrap: break-word;
+}
+
+
+/* Mantém links e botões acessíveis ao toque */
+a,
+button {
+    touch-action: manipulation;
+}
+
+
+/* Respeita usuários que preferem menos animação */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+       transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}
