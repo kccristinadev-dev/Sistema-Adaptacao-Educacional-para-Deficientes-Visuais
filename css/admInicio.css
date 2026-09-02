@@ -1,0 +1,704 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: var(--cor-fundo);
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto-principal);
+    overflow-x: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+}
+
+.logo_dorina {
+    width: 70px;
+    height: auto;
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+header h3 {
+    margin-left: auto;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    width: 100%;
+    padding: 20px;
+}
+
+/* =========================
+   GRID ADMINISTRATIVO
+========================= */
+
+#conteudo-admin {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-rows: repeat(5, auto);
+    gap: 15px;
+
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* =========================
+   BOTÕES DO MENU
+========================= */
+
+.bnt {
+    width: 100%;
+    min-height: 65px;
+
+    border: 3px solid var(--roxo-intenso);
+    border-radius: 18px;
+
+    background: var(--cor-fundo);
+    color: var(--texto-principal);
+
+    padding: 14px;
+
+    cursor: pointer;
+
+    overflow-wrap: anywhere;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.bnt h3 {
+    font-weight: 900;
+    color: var(--texto-principal);
+}
+
+.bnt:hover {
+    background: var(--cor-caixa);
+    box-shadow: var(--sombra-roxa);
+}
+
+.bnt:focus-visible {
+    outline: 3px solid var(--roxo-vibrante);
+    outline-offset: 3px;
+}
+
+.bnt:active {
+    transform: scale(0.97);
+}
+
+/* =========================
+   PAINEL
+========================= */
+
+#painel {
+    grid-column: 2;
+    grid-row: 1 / 6;
+
+    min-width: 0;
+    width: 100%;
+
+    padding: 25px;
+
+    background: var(--cor-caixa);
+
+    border: 2px solid var(--cor-borda);
+    border-radius: 24px;
+
+    box-shadow: var(--sombra-roxa);
+
+    overflow-x: auto;
+}
+
+#painel > h2 {
+    margin-bottom: 20px;
+
+    color: var(--roxo-escuro);
+
+    font-size: 1.8rem;
+}
+
+#painel section {
+    width: 100%;
+    min-width: 0;
+}
+
+#painel section h3 {
+    margin-bottom: 15px;
+    color: var(--texto-principal);
+}
+
+/* =========================
+   BOTÕES INTERNOS
+========================= */
+
+#painel button:not(.bnt),
+.form-sheet button {
+    border: none;
+    border-radius: 12px;
+
+    padding: 12px 18px;
+
+    background: var(--roxo-principal);
+    color: white;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#painel button:not(.bnt):hover,
+.form-sheet button:hover {
+    background: var(--roxo-intenso);
+    box-shadow: var(--sombra-roxa);
+}
+
+#painel button:not(.bnt):focus-visible,
+.form-sheet button:focus-visible {
+    outline: 3px solid var(--roxo-vibrante);
+    outline-offset: 3px;
+}
+
+#painel button:not(.bnt):active,
+.form-sheet button:active {
+    transform: scale(0.97);
+}
+
+/* =========================
+   FORMULÁRIO NORMAL
+========================= */
+
+#painel form {
+    width: 100%;
+    max-width: 600px;
+
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#painel input,
+#painel select,
+#painel textarea {
+    width: 100%;
+    min-height: 48px;
+
+    padding: 12px 14px;
+
+    border: 2px solid var(--cor-borda);
+    border-radius: 12px;
+
+    background: var(--cor-fundo);
+    color: var(--texto-principal);
+
+    font-size: 1rem;
+}
+
+#painel input:focus,
+#painel select:focus,
+#painel textarea:focus {
+    outline: 3px solid var(--roxo-vibrante);
+    outline-offset: 2px;
+}
+
+/* =========================
+   FIELDSET
+========================= */
+
+#painel fieldset,
+.form-sheet fieldset {
+    width: 100%;
+    margin: 5px 0;
+
+    border: 2px solid var(--cor-borda);
+    border-radius: 16px;
+
+    padding: 18px;
+
+    background: var(--cor-fundo);
+}
+
+#painel legend,
+.form-sheet legend {
+    padding: 0 10px;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    color: var(--roxo-escuro);
+}
+
+#materias,
+#necessidades {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#materias label,
+#necessidades label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    padding: 10px 12px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+#materias input[type="checkbox"],
+#necessidades input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-height: 18px;
+
+    flex: 0 0 18px;
+
+    margin: 0;
+
+    accent-color: var(--roxo-principal);
+
+    cursor: pointer;
+}
+/* =========================
+   LISTAS E TABELAS
+========================= */
+
+#lista-alunos,
+#professor,
+#Turmas {
+    width: 100%;
+    min-width: 0;
+
+    max-height: 400px;
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    border-radius: 12px;
+}
+
+/* Necessidades são checkboxes, não tabela */
+
+#necessidades {
+    width: 100%;
+    min-width: 0;
+
+    max-height: 250px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 5px;
+}
+
+/* Conteúdo das listas */
+
+#lista-alunos > *,
+#professor > *,
+#Turmas > *,
+#necessidades > * {
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   TABELAS
+========================= */
+
+#painel table {
+    width: 100%;
+    min-width: 500px;
+
+    border-collapse: collapse;
+
+    background: var(--cor-fundo);
+}
+
+#painel th,
+#painel td {
+    padding: 12px;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+#painel th {
+    background: var(--roxo-principal);
+    color: white;
+
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* ==================================================
+   BOTTOM SHEET
+================================================== */
+
+.form-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    background: rgba(24, 24, 27, 0.45);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.form-overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.form-sheet {
+    width: min(100%, 650px);
+    max-height: 90vh;
+
+    padding: 20px 25px 30px;
+
+    background: var(--cor-fundo);
+
+    border-radius: 28px 28px 0 0;
+
+    box-shadow:
+        0 -8px 30px rgba(76, 29, 149, 0.25);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    transform: translateY(100%);
+
+    transition:
+        transform 0.3s ease;
+}
+
+.form-overlay.ativo .form-sheet {
+    transform: translateY(0);
+}
+
+/* Barrinha */
+
+.form-handle {
+    width: 45px;
+    height: 5px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 10px;
+
+    background: var(--cor-borda);
+}
+
+/* Título */
+
+.form-sheet h2 {
+    margin-bottom: 20px;
+
+    color: var(--roxo-escuro);
+
+    font-size: 1.5rem;
+}
+
+/* Formulário quando estiver dentro do bottom sheet */
+
+.form-sheet form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-sheet input,
+.form-sheet select,
+.form-sheet textarea {
+    width: 100%;
+    min-height: 50px;
+
+    padding: 12px 14px;
+
+    border: 2px solid var(--cor-borda);
+    border-radius: 12px;
+
+    background: var(--cor-fundo);
+    color: var(--texto-principal);
+
+    font-size: 1rem;
+}
+
+.form-sheet input:focus,
+.form-sheet select:focus,
+.form-sheet textarea:focus {
+    outline: 3px solid var(--roxo-vibrante);
+    outline-offset: 2px;
+}
+
+/* =========================
+   AÇÕES DO FORMULÁRIO
+========================= */
+
+.form-acoes {
+    display: flex;
+    gap: 10px;
+
+    width: 100%;
+
+    margin-top: 5px;
+}
+
+.form-acoes button {
+    flex: 1;
+
+    min-height: 48px;
+}
+
+.form-acoes .cancelar {
+    background: transparent !important;
+
+    color: var(--roxo-escuro) !important;
+
+    border: 2px solid var(--cor-borda) !important;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 700px) {
+
+    main {
+        padding: 12px;
+    }
+
+    #conteudo-admin {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        grid-template-rows: auto;
+
+        gap: 8px;
+    }
+
+    #painel {
+        grid-column: 1 / -1;
+
+        /*
+           IMPORTANTE:
+           não colocamos grid-row: 3.
+           O painel entra automaticamente depois
+           dos cinco botões.
+        */
+        grid-row: auto;
+
+        width: 100%;
+        min-width: 0;
+
+        padding: 18px;
+
+        border-radius: 20px;
+
+        overflow-x: auto;
+    }
+
+    .bnt {
+        min-height: 48px;
+
+        padding: 8px;
+
+        border-width: 2px;
+        border-radius: 13px;
+    }
+
+    .bnt h3 {
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    header {
+        justify-content: center;
+
+        text-align: center;
+
+        gap: 8px;
+
+        padding: 10px;
+    }
+
+    .logo_dorina {
+        width: 55px;
+    }
+
+    header h3 {
+        width: 100%;
+
+        margin-left: 0;
+
+        font-size: 0.95rem;
+    }
+
+    #painel {
+        padding: 15px;
+
+        border-radius: 18px;
+    }
+
+    #painel > h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-sheet {
+        width: 100%;
+
+        max-height: 92vh;
+
+        padding:
+            18px
+            15px
+            25px;
+
+        border-radius: 22px 22px 0 0;
+    }
+
+    .form-sheet input,
+    .form-sheet select,
+    .form-sheet textarea {
+        min-height: 50px;
+    }
+
+    .form-acoes {
+        flex-direction: column;
+    }
+}
+ #lista-alunos,
+    #professor,
+    #Turmas {
+        max-height: 320px;
+    }
+
+    #necessidades {
+        max-height: 220px;
+    }
+
+    #painel table {
+        min-width: 450px;
+    }
+/* =========================
+   CELULAR MUITO ESTREITO
+========================= */
+
+@media (max-width: 400px) {
+
+    main {
+        padding: 8px;
+    }
+
+    #conteudo-admin {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    .bnt {
+        min-height: 42px;
+
+        padding: 7px 5px;
+
+        border-radius: 11px;
+    }
+
+    .bnt h3 {
+        font-size: 0.78rem;
+    }
+
+    #painel {
+        grid-column: 1 / -1;
+
+        grid-row: auto;
+
+        padding: 12px;
+    }
+
+    #painel table {
+        min-width: 450px;
+    }
+
+    .form-sheet {
+        max-height: 94vh;
+
+        padding:
+            16px
+            12px
+            22px;
+    }
+
+    .form-sheet h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* =========================
+   REDUÇÃO DE MOVIMENTO
+   ACESSIBILIDADE
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
