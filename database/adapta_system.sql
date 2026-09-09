@@ -58,10 +58,9 @@ status ENUM('publicada', 'em andamento', 'Concluída', 'entregue'),
   titulo VARCHAR(255) NOT NULL,
   descricao VARCHAR(300) NOT NULL,
   id_materia INT NOT NULL,
-  id_turma INT NOT NULL,
+  
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (id_materia) REFERENCES materias(id_materia),
-  FOREIGN KEY (id_turma) REFERENCES turmas(id_turma)
+  FOREIGN KEY (id_materia) REFERENCES materias(id_materia)
 );
 
 -- TURMA NECESSIDADE 
@@ -142,3 +141,12 @@ CREATE TABLE turma_materia (
     FOREIGN KEY (id_materia)
         REFERENCES materias(id_materia)
 );
+
+CREATE TABLE atividades_turmas (
+  id_atividade INT NOT NULL,
+  id_turma INT NOT NULL,
+  PRIMARY KEY (id_atividade, id_turma), -- Chave composta = não repete
+  FOREIGN KEY (id_atividade) REFERENCES atividades(id_atividade) ON DELETE CASCADE,
+  FOREIGN KEY (id_turma) REFERENCES turmas(id_turma) ON DELETE CASCADE
+);
+   
