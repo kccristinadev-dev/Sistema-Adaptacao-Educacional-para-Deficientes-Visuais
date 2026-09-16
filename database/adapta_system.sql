@@ -69,6 +69,7 @@ CREATE TABLE respostas (
     resposta TEXT NOT NULL,
     id_atividade INT NOT NULL,
     id_aluno INT NOT NULL,
+arquivo VARCHAR(255) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (id_atividade) REFERENCES atividades(id_atividade),
