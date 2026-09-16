@@ -23,7 +23,7 @@ public function cadastrarAtividade($status, $titulo, $descrição, $id_materia, 
 
     // Executa o cadastro passando os valores
     $stmt->execute([
-        ':status' => $status,
+        ':status' => 'publicada',
         ':titulo' => $titulo,
         ':descrição' => $descrição,
         ':id_materia' => $id_materia
