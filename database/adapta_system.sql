@@ -58,7 +58,7 @@ status ENUM('pendente', 'publicada', 'em andamento', 'Concluída', 'entregue'),
   titulo VARCHAR(255) NOT NULL,
   descricao VARCHAR(300) NOT NULL,
   id_materia INT NOT NULL,
-arquivo VARCHAR(255) NULL
+arquivo VARCHAR(255) NULL,
   
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (id_materia) REFERENCES materias(id_materia)
