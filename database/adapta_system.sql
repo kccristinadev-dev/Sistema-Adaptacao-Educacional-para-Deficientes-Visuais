@@ -64,6 +64,17 @@ arquivo VARCHAR(255) NULL,
   FOREIGN KEY (id_materia) REFERENCES materias(id_materia)
 );
 
+CREATE TABLE respostas (
+    id_resposta INT PRIMARY KEY AUTO_INCREMENT,
+    resposta TEXT NOT NULL,
+    id_atividade INT NOT NULL,
+    id_aluno INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (id_atividade) REFERENCES atividades(id_atividade),
+    FOREIGN KEY (id_aluno) REFERENCES alunos(id_aluno)
+);
+
 -- TURMA NECESSIDADE 
 CREATE TABLE necessidades (
   id_necessidade INT PRIMARY KEY AUTO_INCREMENT,
