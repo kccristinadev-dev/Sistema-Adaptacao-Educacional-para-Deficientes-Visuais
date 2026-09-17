@@ -162,4 +162,20 @@ CREATE TABLE atividades_turmas (
   FOREIGN KEY (id_atividade) REFERENCES atividades(id_atividade) ON DELETE CASCADE,
   FOREIGN KEY (id_turma) REFERENCES turmas(id_turma) ON DELETE CASCADE
 );
+
+CREATE TABLE professor_turma (
+    id_professor INT NOT NULL,
+    id_turma INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id_professor, id_turma),
+
+    FOREIGN KEY (id_professor)
+        REFERENCES professores(id_professor)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (id_turma)
+        REFERENCES turmas(id_turma)
+        ON DELETE CASCADE
+);
    
