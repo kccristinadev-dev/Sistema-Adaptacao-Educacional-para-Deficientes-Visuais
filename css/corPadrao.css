@@ -1,0 +1,21 @@
+:root {
+    /* Fundo */
+    --cor-fundo: #ffffff;
+    --cor-caixa: #faf5ff;
+
+    /* Roxos fortes */
+    --roxo-principal: #6d28d9;
+    --roxo-intenso: #7e22ce;
+    --roxo-vibrante: #9333ea;
+    --roxo-escuro: #4c1d95;
+
+    /* Textos */
+    --texto-principal: #18181b;
+    --texto-secundario: #52525b;
+
+    /* Inputs e bordas */
+    --cor-borda: #c084fc;
+
+    /* Efeitos */
+    --sombra-roxa: 0 8px 25px rgba(126, 34, 206, 0.25);
+}

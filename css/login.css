@@ -1,0 +1,22 @@
+.form-login {
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-login input {
+    padding: 12px;
+    border: 2px solid #c084fc;
+    border-radius: 8px;
+}
+
+.form-login button {
+    background: #6d28d9;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+}
