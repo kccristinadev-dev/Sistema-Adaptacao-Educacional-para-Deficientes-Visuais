@@ -1,12 +1,9 @@
 <?php
-
 class Resposta {
-
-    private $conn;
-
-    public function __construct($conexao){
-        $this->conn = $conexao;
-    }
+private $conn;
+public function __construct($conexao){
+$this->conn = $conexao;
+}
 
 
     // Cadastrar resposta
@@ -75,26 +72,45 @@ public function listarRespostasAluno($id_aluno)
 // Listar respostas do professor
 public function listarRespostasProfessor($id_professor)
 {
-    // Cria o comando SQL para buscar as respostas das atividades do professor
     $sql = "
-    SELECT respostas.*
-    FROM respostas
-    INNER JOIN atividades
-        ON respostas.id_atividade = atividades.id_atividade
-    INNER JOIN professor_materia
-        ON atividades.id_materia = professor_materia.id_materia
-    WHERE professor_materia.id_professor = :id_professor
+        SELECT
+            respostas.id_resposta,
+            respostas.resposta,
+            respostas.arquivo,
+            respostas.created_at,
+
+            atividades.id_atividade,
+            atividades.titulo,
+
+            materias.nome AS materia,
+
+            alunos.id_aluno
+
+        FROM respostas
+
+        INNER JOIN atividades
+            ON respostas.id_atividade = atividades.id_atividade
+
+        INNER JOIN materias
+            ON atividades.id_materia = materias.id_materia
+
+        INNER JOIN professor_materia
+            ON atividades.id_materia = professor_materia.id_materia
+
+        INNER JOIN alunos
+            ON respostas.id_aluno = alunos.id_aluno
+
+        WHERE professor_materia.id_professor = :id_professor
+
+        ORDER BY respostas.created_at DESC
     ";
 
-    // Prepara o comando SQL
     $stmt = $this->conn->prepare($sql);
 
-    // Executa a consulta passando o ID do professor
     $stmt->execute([
         ':id_professor' => $id_professor
     ]);
 
-    // Retorna as respostas encontradas
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
     // Editar resposta
