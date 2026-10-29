@@ -30,6 +30,27 @@ $this->conn = $conexao;
         return $this->conn->lastInsertId();
     }
 
+    public function alunoPodeResponder($id_atividade, $id_aluno)
+    {
+        $sql = "
+            SELECT 1
+            FROM atividades_turmas
+            INNER JOIN aluno_turma
+                ON atividades_turmas.id_turma = aluno_turma.id_turma
+            WHERE atividades_turmas.id_atividade = :id_atividade
+              AND aluno_turma.id_aluno = :id_aluno
+            LIMIT 1
+        ";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            ':id_atividade' => $id_atividade,
+            ':id_aluno' => $id_aluno
+        ]);
+
+        return (bool) $stmt->fetchColumn();
+    }
+
 
     // Listar respostas
     public function listarRespostas()
@@ -53,8 +74,12 @@ public function listarRespostasAluno($id_aluno)
 {
     // Cria o comando SQL para buscar as respostas do aluno
     $sql = "
-    SELECT respostas.*
+    SELECT
+        respostas.*,
+        atividades.titulo
     FROM respostas
+    INNER JOIN atividades
+        ON respostas.id_atividade = atividades.id_atividade
     WHERE respostas.id_aluno = :id_aluno
     ";
 
@@ -84,7 +109,9 @@ public function listarRespostasProfessor($id_professor)
 
             materias.nome AS materia,
 
-            alunos.id_aluno
+            alunos.id_aluno,
+            pessoas.nome AS nome_aluno,
+            'entregue' AS status
 
         FROM respostas
 
@@ -99,6 +126,9 @@ public function listarRespostasProfessor($id_professor)
 
         INNER JOIN alunos
             ON respostas.id_aluno = alunos.id_aluno
+
+        INNER JOIN pessoas
+            ON alunos.id_pessoa = pessoas.id_pessoa
 
         WHERE professor_materia.id_professor = :id_professor
 

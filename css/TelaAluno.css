@@ -1,0 +1,302 @@
+:root {
+    --escala-inicial-texto: 1;
+    --fundo-aluno: #ffffff;
+    --superficie-aluno: #faf5ff;
+    --texto-aluno: #18181b;
+    --texto-secundario-aluno: #3f3f46;
+    --primaria-aluno: #4c1d95;
+    --borda-aluno: #7e22ce;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 2rem 2rem 2rem 17rem;
+    background: var(--fundo-aluno);
+    color: var(--texto-aluno);
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    min-height: 44px;
+    padding: 0.65rem 1rem;
+    border: 2px solid var(--primaria-aluno);
+    border-radius: 0.5rem;
+    background: var(--primaria-aluno);
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(1.15);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #d97706;
+    outline-offset: 3px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.skip-link {
+    position: absolute;
+    z-index: 20;
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.75rem 1rem;
+    transform: translateY(-160%);
+    background: #ffffff;
+    color: #18181b;
+    border: 2px solid var(--primaria-aluno);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+.menu-aluno {
+    position: fixed;
+    inset: 0 auto 0 0;
+    display: flex;
+    width: 15rem;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+    background: var(--primaria-aluno);
+}
+
+.menu-aluno button {
+    text-align: left;
+}
+
+.menu-aluno button[aria-current="page"] {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+}
+
+.tela {
+    display: none;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.tela.ativa {
+    display: block;
+}
+
+.tela h1,
+.tela h2 {
+    color: var(--primaria-aluno);
+    line-height: 1.25;
+}
+
+.card-atividade,
+.card-resposta,
+.conteudo-resposta {
+    margin: 1rem 0;
+    overflow-wrap: anywhere;
+    border: 2px solid var(--borda-aluno);
+    border-radius: 0.75rem;
+    background: var(--superficie-aluno);
+}
+
+.cabecalho-atividade {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: left;
+}
+
+.resumo-atividade,
+.detalhes-atividade,
+.card-resposta {
+    padding: 1rem;
+}
+
+.detalhes-atividade[hidden] {
+    display: none;
+}
+
+.status-envio {
+    min-height: 1.6em;
+    font-weight: 700;
+}
+
+.opcoes-acessibilidade {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.opcoes-acessibilidade button[aria-pressed="true"] {
+    outline: 3px solid #d97706;
+    outline-offset: 2px;
+}
+
+.tela-resposta {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    overflow-y: auto;
+    padding: 1.5rem;
+    background: var(--fundo-aluno);
+}
+
+.conteudo-resposta {
+    width: min(52rem, 100%);
+    margin: 1.5rem auto;
+    padding: clamp(1rem, 4vw, 2rem);
+}
+
+.conteudo-resposta form {
+    display: grid;
+    gap: 1rem;
+}
+
+.campo-resposta {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.campo-resposta textarea,
+.campo-resposta input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--borda-aluno);
+    border-radius: 0.4rem;
+    background: var(--fundo-aluno);
+    color: var(--texto-aluno);
+}
+
+.campo-resposta textarea {
+    min-height: 12rem;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+body.adaptacao-alto-contraste {
+    --fundo-aluno: #000000;
+    --superficie-aluno: #000000;
+    --texto-aluno: #ffffff;
+    --texto-secundario-aluno: #ffffff;
+    --primaria-aluno: #000000;
+    --borda-aluno: #ffff00;
+    color-scheme: dark;
+}
+
+body.adaptacao-ampliacao-texto {
+    --escala-inicial-texto: 1.25;
+}
+
+body.adaptacao-alto-contraste .tela h1,
+body.adaptacao-alto-contraste .tela h2,
+body.adaptacao-alto-contraste .conteudo-resposta h1,
+body.adaptacao-alto-contraste .conteudo-resposta h2,
+body.adaptacao-alto-contraste a {
+    color: #ffff00;
+}
+
+body.adaptacao-alto-contraste .menu-aluno,
+body.adaptacao-alto-contraste button {
+    border-color: #ffff00;
+    background: #000000;
+    color: #ffff00;
+}
+
+body.adaptacao-alto-contraste .conteudo-resposta,
+body.adaptacao-alto-contraste .card-atividade,
+body.adaptacao-alto-contraste .card-resposta {
+    border-color: #ffff00;
+}
+
+body.adaptacao-leitor-de-tela :focus-visible {
+    outline-width: 4px;
+    outline-offset: 4px;
+}
+
+body.adaptacao-text-to-speech .btn-ler-atividade:not([hidden]) {
+    display: inline-flex;
+    margin-block: 0.75rem;
+}
+
+body.adaptacao-indicadores-textuais a {
+    text-decoration: underline;
+    text-decoration-thickness: 0.12em;
+    text-underline-offset: 0.15em;
+}
+
+body.adaptacao-indicadores-textuais .status-atividade,
+body.adaptacao-indicadores-textuais .status-envio {
+    font-weight: 700;
+    border-inline-start: 0.25rem solid currentColor;
+    padding-inline-start: 0.5rem;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 1rem 1rem 6.5rem;
+    }
+
+    .menu-aluno {
+        inset: auto 0 0;
+        width: 100%;
+        padding: 0.5rem;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.25rem;
+    }
+
+    .menu-aluno button {
+        min-height: 52px;
+        padding: 0.4rem;
+        text-align: center;
+        font-size: 0.85rem;
+    }
+
+    .menu-aluno button span {
+        display: block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

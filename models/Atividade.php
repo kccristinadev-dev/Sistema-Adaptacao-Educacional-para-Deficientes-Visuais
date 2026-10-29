@@ -19,12 +19,16 @@ public function cadastrarAtividade(
 ) {
 
     // Caminho onde os arquivos serão salvos
-    $pasta = "../../uploads/atividades/";
+    $pasta = dirname(__DIR__) . "/uploads/atividades/";
 
     $nomeArquivo = null;
 
     // Verifica se foi enviado algum arquivo
     if ($arquivo && $arquivo['error'] === UPLOAD_ERR_OK) {
+
+        if (!is_dir($pasta) && !mkdir($pasta, 0775, true) && !is_dir($pasta)) {
+            return false;
+        }
 
         $nomeOriginal = basename($arquivo['name']);
 
@@ -33,10 +37,12 @@ public function cadastrarAtividade(
 
         $destino = $pasta . $nomeArquivo;
 
-        move_uploaded_file(
+        if (!move_uploaded_file(
             $arquivo['tmp_name'],
             $destino
-        );
+        )) {
+            return false;
+        }
     }
 
 
@@ -97,24 +103,50 @@ public function listarAtividade(){
 public function listarAtividadeAluno($id_aluno)
 {
     $sql = "
-    SELECT atividades.*
+    SELECT
+        atividades.*,
+        materias.nome AS materia,
+        (
+            SELECT GROUP_CONCAT(DISTINCT turmas.nome SEPARATOR ', ')
+            FROM atividades_turmas
+            INNER JOIN turmas
+                ON atividades_turmas.id_turma = turmas.id_turma
+            INNER JOIN aluno_turma
+                ON atividades_turmas.id_turma = aluno_turma.id_turma
+            WHERE atividades_turmas.id_atividade = atividades.id_atividade
+              AND aluno_turma.id_aluno = :id_aluno_turmas
+        ) AS turmas,
+        CASE
+            WHEN entregas.id_resposta IS NOT NULL THEN 'entregue'
+            ELSE atividades.status
+        END AS status_aluno
     FROM atividades
-    INNER JOIN atividades_turmas
-        ON atividades.id_atividade = atividades_turmas.id_atividade
-    INNER JOIN aluno_turma
-        ON atividades_turmas.id_turma = aluno_turma.id_turma
-    WHERE aluno_turma.id_aluno = :id_aluno
+    INNER JOIN materias
+        ON atividades.id_materia = materias.id_materia
+    LEFT JOIN (
+        SELECT id_atividade, MAX(id_resposta) AS id_resposta
+        FROM respostas
+        WHERE id_aluno = :id_aluno_resposta
+        GROUP BY id_atividade
+    ) AS entregas
+        ON atividades.id_atividade = entregas.id_atividade
+    WHERE EXISTS (
+        SELECT 1
+        FROM atividades_turmas
+        INNER JOIN aluno_turma
+            ON atividades_turmas.id_turma = aluno_turma.id_turma
+        WHERE atividades_turmas.id_atividade = atividades.id_atividade
+          AND aluno_turma.id_aluno = :id_aluno_turma
+    )
+    ORDER BY atividades.created_at DESC
     ";
 
-    // Prepara o comando SQL
     $stmt = $this->conn->prepare($sql);
-
-    // Executa a consulta passando o ID do aluno
     $stmt->execute([
-        ':id_aluno' => $id_aluno
+        ':id_aluno_resposta' => $id_aluno,
+        ':id_aluno_turmas' => $id_aluno,
+        ':id_aluno_turma' => $id_aluno
     ]);
-
-    // Retorna as atividades encontradas
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 

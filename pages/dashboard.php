@@ -19,7 +19,7 @@ require "../config/conexao.php";
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=local_library,mic,school">
  
     <!-- CSS -->
-<link rel="stylesheet" href="../css/TelaProfessor.css">
+<link rel="stylesheet" href="<?= htmlspecialchars($cssTela ?? '../css/TelaProfessor.css') ?>">
     <link rel="stylesheet" href="../css/corPadrao.css">
 
     <!-- Título -->
@@ -30,16 +30,16 @@ require "../config/conexao.php";
     
 </head>
 
-<body class="<?= htmlspecialchars($adptacao ?? '') ?>">        <!-- CONTEÚDO PRINCIPAL -->
-<main id="app">
+<body class="<?= htmlspecialchars(implode(' ', $classesAdaptacao ?? []), ENT_QUOTES, 'UTF-8') ?>">
+<main id="app" tabindex="-1">
     <h1>Olá, <?= htmlspecialchars($nome) ?>!</h1>  
 
 </main> 
 <script>
-    const nome = <?= json_encode($nome) ?>;
-    const atividades = <?= json_encode($atividades ?? []) ?>;
-    const respostas = <?= json_encode($respostas ?? []) ?>;
-    const turmas = <?= json_encode($turmas ?? []) ?>;
+    const nome = <?= json_encode($nome, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) ?>;
+    const atividades = <?= json_encode($atividades ?? [], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) ?>;
+    const respostas = <?= json_encode($respostas ?? [], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) ?>;
+    const turmas = <?= json_encode($turmas ?? [], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) ?>;
 </script>
 
 <script src="<?= $jsTela ?>" defer></script>
@@ -50,10 +50,4 @@ require "../config/conexao.php";
     </script>
 <?php endforeach; ?>
 </body>
-</html>
-        
-        
-        
-    </main>
-        </body>
 </html>

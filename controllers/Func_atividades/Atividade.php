@@ -62,6 +62,6 @@ if ($acao === 'cadastrar_atividade') {
         exit;
     }
 
-    header("Location: ../../pages/dashboard.php.php?erro=cadastro");
+    header("Location: ../../pages/dashboard.php?erro=cadastro");
     exit;
 }

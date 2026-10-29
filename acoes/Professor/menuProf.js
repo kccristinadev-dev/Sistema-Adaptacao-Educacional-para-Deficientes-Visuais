@@ -7,9 +7,13 @@ function mostrarTela(id, botao) {
 
 
     document.querySelectorAll(".menu-professor button")
-        .forEach(btn => btn.classList.remove("ativo"));
+        .forEach(btn => {
+            btn.classList.remove("ativo");
+            btn.removeAttribute("aria-current");
+        });
 
     botao.classList.add("ativo");
+    botao.setAttribute("aria-current", "page");
     
 
 }

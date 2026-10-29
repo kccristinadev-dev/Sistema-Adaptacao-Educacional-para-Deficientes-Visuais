@@ -11,22 +11,17 @@ require "../../models/Resposta.php";
 
 $respostaModel = new Resposta($conexao);
 
-
 // ==============================
 // ENVIAR RESPOSTA
 // ==============================
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    header('Content-Type: application/json; charset=utf-8');
 
-
-echo json_encode([
-    "id_atividade" => $_POST['id_atividade'] ?? null,
-    "resposta" => $_POST['resposta'] ?? null,
-    "arquivo" => $_FILES['arquivo']['name'] ?? null
-]);
-exit;
-
-    $id_atividade = $_POST['id_atividade'] ?? null;
+    $id_atividade = filter_var(
+        $_POST['id_atividade'] ?? null,
+        FILTER_VALIDATE_INT
+    );
     $resposta = $_POST['resposta'] ?? '';
     $id_aluno = $_SESSION['id_aluno'] ?? null;
 
@@ -54,7 +49,7 @@ exit;
     // VERIFICAR RESPOSTA
     // ==============================
 
-    if (!$id_atividade) {
+    if (!$id_atividade || $id_atividade < 1) {
 
     http_response_code(400);
 
@@ -65,6 +60,24 @@ exit;
 
     exit;
 }
+
+if (!is_string($resposta)) {
+    http_response_code(400);
+    echo json_encode([
+        "sucesso" => false,
+        "mensagem" => "O conteúdo da resposta é inválido."
+    ]);
+    exit;
+}
+
+    if (!$respostaModel->alunoPodeResponder($id_atividade, $id_aluno)) {
+        http_response_code(403);
+        echo json_encode([
+            "sucesso" => false,
+            "mensagem" => "Esta atividade não está vinculada à sua turma."
+        ]);
+        exit;
+    }
 
 
 if (trim($resposta) === '') {
@@ -128,7 +141,7 @@ if (trim($resposta) === '') {
         ];
 
 
-        if (!in_array($extensao, $extensoesPermitidas)) {
+        if (!in_array($extensao, $extensoesPermitidas, true)) {
 
             http_response_code(400);
 
@@ -141,11 +154,15 @@ if (trim($resposta) === '') {
         }
 
 
-        $pasta = "../../uploads/respostas/";
+        $pasta = dirname(__DIR__, 2) . "/uploads/respostas/";
 
-
-        if (!is_dir($pasta)) {
-            mkdir($pasta, 0775, true);
+        if (!is_dir($pasta) && !mkdir($pasta, 0775, true) && !is_dir($pasta)) {
+            http_response_code(500);
+            echo json_encode([
+                "sucesso" => false,
+                "mensagem" => "Não foi possível preparar o armazenamento do arquivo."
+            ]);
+            exit;
         }
 
 

@@ -9,6 +9,17 @@ function formatarData(data) {
             minute: "2-digit"
         });
 }
+
+function escaparHtml(valor) {
+    return String(valor ?? "").replace(/[&<>"']/g, caractere => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[caractere]);
+}
+
 const lista = document.getElementById("listaAtividades");
 
 atividades.forEach(atividade => {
@@ -18,7 +29,7 @@ atividades.forEach(atividade => {
 
     item.innerHTML = `
         <div class="cabecalho-atividade">
-            <h3>${atividade.titulo}</h3>
+            <h3>${escaparHtml(atividade.titulo)}</h3>
 
             <span class="seta-atividade">⌄</span>
         </div>
@@ -26,23 +37,23 @@ atividades.forEach(atividade => {
         <div class="resumo-atividade">
             <p>
                 <strong>Matéria:</strong>
-                ${atividade.materia}
+                ${escaparHtml(atividade.materia)}
             </p>
 
             <p>
                 <strong>Turmas:</strong>
-                ${atividade.turmas}
+                ${escaparHtml(atividade.turmas)}
             </p>
                 <p>
         <strong>Publicada em:</strong>
-        ${formatarData(atividade.created_at)}
+        ${escaparHtml(formatarData(atividade.created_at))}
     </p>
         </div>
 
 <div class="detalhes-atividade">
     <div>
         <strong>Descrição</strong>
-        <p>${atividade.descricao}</p>
+        <p>${escaparHtml(atividade.descricao)}</p>
     </div>
 
 
@@ -54,11 +65,11 @@ ${
             <p>
                 <a 
                     class="arquivo-atividade"
-                    href="../uploads/atividades/${atividade.arquivo}"
+                    href="../uploads/atividades/${encodeURIComponent(atividade.arquivo)}"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    📎 ${atividade.arquivo}
+                    📎 ${escaparHtml(atividade.arquivo)}
                 </a>
             </p>
         </div>
@@ -68,7 +79,7 @@ ${
 
     <p>
         <strong>Status:</strong>
-        ${atividade.status}
+        ${escaparHtml(atividade.status)}
     </p>
 
 </div>

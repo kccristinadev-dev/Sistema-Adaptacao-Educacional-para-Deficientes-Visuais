@@ -18,6 +18,7 @@ try {
         require "../models/Aluno.php";
         require "../models/Resposta.php";
         require "../models/Atividade.php";
+        require_once __DIR__ . "/Func_aluno/adaptacoesAluno.php";
 
         $aluno = new Aluno($conexao);
         $resposta = new Resposta($conexao);
@@ -30,8 +31,9 @@ try {
 $_SESSION['id_aluno'] = $id_aluno;
         $respostas = $resposta->listarRespostasAluno($id_aluno);
         $atividades = $atividade->listarAtividadeAluno($id_aluno);
+$classesAdaptacao = carregarAdaptacoesAluno($conexao, (int) $id_aluno);
 
-        $jsTela = "../acoes/Aluno/TelaAluno.js";
+$jsTela = "../acoes/Aluno/TelaAluno.js";
         
     $jsFuncoes = [
         "../acoes/Aluno/menuAluno.js"

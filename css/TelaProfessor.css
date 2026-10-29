@@ -11,6 +11,22 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.skip-link {
+    position: absolute;
+    z-index: 20;
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.75rem 1rem;
+    transform: translateY(-160%);
+    background: #ffffff;
+    color: #18181b;
+    border: 2px solid var(--roxo-escuro);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
 
 /* ================================
    MENU LATERAL - DESKTOP
@@ -248,6 +264,28 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.card-resposta {
+    padding: 1.25rem;
+    background: var(--cor-fundo);
+    border: 2px solid var(--roxo-escuro);
+    border-radius: 0.75rem;
+    overflow-wrap: anywhere;
+}
+
+.card-resposta h3 {
+    margin-top: 0;
+    color: var(--roxo-escuro);
+}
+
+.card-resposta a {
+    color: var(--roxo-escuro);
+    font-weight: 700;
+}
+
+.status-entrega {
+    font-weight: 700;
 }
 
 /* ================================
