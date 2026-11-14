@@ -82,8 +82,25 @@ ${
         ${escaparHtml(atividade.status)}
     </p>
 
+    <button type="button" class="btn-exportar-brf">
+        Baixar atividade em Braille (.brf)
+    </button>
+    <p class="status-exportacao" role="status" aria-live="polite"></p>
+
 </div>
     `;
+
+const botaoExportarBrf = item.querySelector(".btn-exportar-brf");
+botaoExportarBrf.addEventListener("click", evento => {
+    evento.stopPropagation();
+    const statusExportacao = item.querySelector(".status-exportacao");
+    try {
+        exportarAtividadeBrf(atividade);
+        statusExportacao.textContent = "Arquivo .brf da atividade baixado.";
+    } catch (erro) {
+        statusExportacao.textContent = `Não foi possível exportar a atividade: ${erro.message}`;
+    }
+});
 
 const linkArquivo = item.querySelector(".arquivo-atividade");
 

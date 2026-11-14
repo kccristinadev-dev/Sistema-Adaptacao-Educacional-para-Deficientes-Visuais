@@ -42,6 +42,7 @@ require "../config/conexao.php";
     const turmas = <?= json_encode($turmas ?? [], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) ?>;
 </script>
 
+<script src="../acoes/exportarBrf.js" defer></script>
 <script src="<?= $jsTela ?>" defer></script>
 
 <?php foreach ($jsFuncoes as $arquivo): ?>

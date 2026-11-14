@@ -343,6 +343,13 @@ atividades.forEach((atividade, indice) => {
 
       <button
          type="button"
+         class="btn-exportar-brf"
+                    >
+                        Baixar atividade em Braille (.brf)
+                    </button>
+
+      <button
+         type="button"
          class="btn-responder"
  data-id-atividade="${atividade.id_atividade}"
                     >
@@ -389,6 +396,17 @@ atividades.forEach((atividade, indice) => {
 
 const botaoResponder =
     item.querySelector(".btn-responder");
+
+const botaoExportarBrf = item.querySelector(".btn-exportar-brf");
+botaoExportarBrf.addEventListener("click", () => {
+    const statusExportacao = item.querySelector(".status-envio");
+    try {
+        exportarAtividadeBrf(atividade);
+        statusExportacao.textContent = "Arquivo .brf da atividade baixado.";
+    } catch (erro) {
+        statusExportacao.textContent = `Não foi possível exportar a atividade: ${erro.message}`;
+    }
+});
 
 botaoResponder.addEventListener("click", () => {
 
