@@ -50,9 +50,15 @@ return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-// Cadastra pessoa
+// Cadastra pessoa com senha protegida
 private function cadastrarPessoa($nome, $email, $cpf, $telefone, $senha, $tipo)
 {
+    // Gera um hash seguro da senha
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    if ($senhaHash === false) {
+        throw new RuntimeException("Não foi possível proteger a senha.");
+    }
 
     $sql = "INSERT INTO pessoas
             (nome, email, cpf, telefone, senha, tipo)
@@ -66,14 +72,12 @@ private function cadastrarPessoa($nome, $email, $cpf, $telefone, $senha, $tipo)
         ':email' => $email,
         ':cpf' => $cpf,
         ':telefone' => $telefone,
-        ':senha' => $senha,
+        ':senha' => $senhaHash,
         ':tipo' => $tipo
     ]);
 
     return $this->conn->lastInsertId();
-   
-        } 
-
+}
 
 
 // Cadastra alunos
